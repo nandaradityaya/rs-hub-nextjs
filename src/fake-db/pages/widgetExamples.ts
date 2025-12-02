@@ -1,6 +1,64 @@
 import type { CardStatsType } from '@/types/pages/widgetTypes'
 
 export const db: CardStatsType = {
+  // ------------------------ RS HUB --------------------------
+  statusPurchaseOrder: [
+    {
+      title: 'New Orders',
+      stats: 8,
+      avatarIcon: 'tabler-square-rounded-plus',
+      color: 'primary'
+    },
+    {
+      title: 'Shipping',
+      stats: 42,
+      avatarIcon: 'tabler-truck',
+      color: 'info'
+    },
+
+    {
+      title: 'GRN Review',
+      stats: 13,
+      avatarIcon: 'tabler-alert-triangle',
+      color: 'warning'
+    },
+    {
+      title: 'Pending',
+      stats: 2,
+      avatarIcon: 'tabler-clock',
+      color: 'error'
+    }
+
+    // {
+    //   title: 'PBF Received',
+    //   stats: 8,
+    //   avatarIcon: 'tabler-file-upload',
+    //   color: 'success'
+    // },
+    // {
+    //   title: 'Processing',
+    //   stats: 27,
+    //   avatarIcon: 'tabler-refresh-alert',
+    //   color: 'info'
+    // },
+
+    // {
+    //   title: 'Completed',
+    //   stats: 42,
+    //   avatarIcon: 'tabler-check',
+    //   color: 'success'
+    // },
+
+    // {
+    //   title: 'Fullfilment Overdue',
+    //   stats: 27,
+    //   avatarIcon: 'tabler-alert-circle',
+    //   color: 'warning'
+    // }
+  ],
+
+  // --------------------- END RS HUB ---------------------------------
+
   statsHorizontalWithAvatar: [
     {
       stats: '$24,983',
@@ -25,36 +83,6 @@ export const db: CardStatsType = {
       title: 'Conversion Rate',
       avatarIcon: 'tabler-infinity',
       avatarColor: 'info'
-    }
-  ],
-  statsHorizontalWithBorder: [
-    {
-      title: 'On route vehicles',
-      stats: 42,
-      trendNumber: 18.2,
-      avatarIcon: 'tabler-truck',
-      color: 'primary'
-    },
-    {
-      title: 'Vehicles with errors',
-      stats: 8,
-      trendNumber: -8.7,
-      avatarIcon: 'tabler-alert-triangle',
-      color: 'warning'
-    },
-    {
-      title: 'Deviated from route',
-      stats: 27,
-      trendNumber: 4.3,
-      avatarIcon: 'tabler-git-fork',
-      color: 'error'
-    },
-    {
-      title: 'Late vehicles',
-      stats: 13,
-      trendNumber: 2.5,
-      avatarIcon: 'tabler-clock',
-      color: 'info'
     }
   ],
   customerStats: [

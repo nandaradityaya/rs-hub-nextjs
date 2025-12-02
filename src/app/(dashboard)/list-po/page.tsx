@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid2'
 
-import InvoiceListTable from '@/views/apps/InvoiceListTable'
+import InvoiceListTable from '@/views/apps/PurchaseOrderListTable'
 import { getPurchaseOrderData } from '../../server/actions'
 
 export default async function Page() {

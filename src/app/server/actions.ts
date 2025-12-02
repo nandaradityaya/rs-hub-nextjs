@@ -34,10 +34,6 @@ export const getInvoiceData = async () => {
   return invoiceData
 }
 
-export const getPurchaseOrderData = async () => {
-  return purchaseOrder
-}
-
 export const getUserData = async () => {
   return userData
 }
@@ -56,6 +52,12 @@ export const getFaqData = async () => {
 
 export const getPricingData = async () => {
   return pricingData
+}
+
+// ------------------------ RS HUB --------------------------
+
+export const getPurchaseOrderData = async () => {
+  return purchaseOrder
 }
 
 export const getStatisticsData = async () => {

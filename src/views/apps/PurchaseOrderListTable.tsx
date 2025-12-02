@@ -14,7 +14,9 @@ import Typography from '@mui/material/Typography'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
-import Tooltip from '@mui/material/Tooltip'
+
+// import Tooltip from '@mui/material/Tooltip'
+import Chip from '@mui/material/Chip'
 import TablePagination from '@mui/material/TablePagination'
 import type { TextFieldProps } from '@mui/material/TextField'
 
@@ -42,10 +44,6 @@ import TablePaginationComponent from '@components/TablePaginationComponent'
 import type { ThemeColor } from '@core/types'
 import type { PurchaseOrderType } from '@/types/apps/purchaseOrderType'
 
-// Component Imports
-import OptionMenu from '@core/components/option-menu'
-import CustomAvatar from '@core/components/mui/Avatar'
-
 import CustomTextField from '@core/components/mui/TextField'
 
 // Style Imports
@@ -64,11 +62,26 @@ type PurchaseOrderTypeWithAction = PurchaseOrderType & {
   action?: string
 }
 
-type InvoiceStatusObj = {
-  [key: string]: {
-    icon: string
-    color: ThemeColor
-  }
+// type InvoiceStatusObj = {
+//   [key: string]: {
+//     icon: string
+//     color: ThemeColor
+//   }
+// }
+
+type chipColorType = {
+  color: ThemeColor
+}
+
+export const chipColor: { [key: string]: chipColorType } = {
+  NEW: { color: 'primary' },
+  PBF_RECEIVED: { color: 'success' },
+  PROCESSING: { color: 'info' },
+  SHIPPING: { color: 'info' },
+  GRN_REVIEW: { color: 'warning' },
+  COMPLETED: { color: 'success' },
+  FULFILLMENT_OVERDUE: { color: 'warning' },
+  PENDING: { color: 'error' }
 }
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
@@ -114,18 +127,18 @@ const DebouncedInput = ({
 }
 
 // Vars
-const poStatusObj: InvoiceStatusObj = {
-  Approved: { color: 'success', icon: 'tabler-check' },
-  Pending: { color: 'warning', icon: 'tabler-clock' },
-  Rejected: { color: 'error', icon: 'tabler-x' },
-  Draft: { color: 'secondary', icon: 'tabler-file' },
-  Cancelled: { color: 'error', icon: 'tabler-ban' }
-}
+// const poStatusObj: InvoiceStatusObj = {
+//   Approved: { color: 'success', icon: 'tabler-check' },
+//   Pending: { color: 'warning', icon: 'tabler-clock' },
+//   Rejected: { color: 'error', icon: 'tabler-x' },
+//   Draft: { color: 'secondary', icon: 'tabler-file' },
+//   Cancelled: { color: 'error', icon: 'tabler-ban' }
+// }
 
 // Column Definitions
 const columnHelper = createColumnHelper<PurchaseOrderTypeWithAction>()
 
-const InvoiceListTable = ({ purchaseOrderData }: { purchaseOrderData: PurchaseOrderType[] }) => {
+const PurchaseOrderListTable = ({ purchaseOrderData }: { purchaseOrderData: PurchaseOrderType[] }) => {
   // States
   const [status, setStatus] = useState<PurchaseOrderType['status']>('')
   const [rowSelection, setRowSelection] = useState({})
@@ -165,56 +178,38 @@ const InvoiceListTable = ({ purchaseOrderData }: { purchaseOrderData: PurchaseOr
           </Typography>
         )
       }),
+      columnHelper.accessor('shipTo', {
+        header: 'Ship To',
+        cell: ({ row }) => <Typography>{row.original.shipTo}</Typography>
+      }),
       columnHelper.accessor('status', {
         header: 'Status',
         cell: ({ row }) => (
-          <Tooltip title={row.original.status}>
-            <CustomAvatar skin='light' color={poStatusObj[row.original.status]?.color || 'secondary'} size={28}>
-              <i className={classnames('bs-4 is-4', poStatusObj[row.original.status]?.icon || 'tabler-file')} />
-            </CustomAvatar>
-          </Tooltip>
+          <Chip variant='tonal' label={row.original.status} size='small' color={chipColor[row.original.status].color} />
         )
       }),
       columnHelper.accessor('poDate', {
         header: 'PO Date',
         cell: ({ row }) => <Typography>{row.original.poDate}</Typography>
       }),
+      columnHelper.accessor('poEndDate', {
+        header: 'PO End Date',
+        cell: ({ row }) => <Typography>{row.original.poEndDate}</Typography>
+      }),
       columnHelper.accessor('action', {
         header: 'Action',
         cell: ({ row }) => (
           <div className='flex items-center'>
             <IconButton>
-              <i className='tabler-trash text-textSecondary' />
-            </IconButton>
-            <IconButton>
               <Link href={`/apps/invoice/preview/${row.original.id}`} className='flex'>
                 <i className='tabler-eye text-textSecondary' />
               </Link>
             </IconButton>
-            <OptionMenu
-              iconButtonProps={{ size: 'medium' }}
-              iconClassName='text-textSecondary'
-              options={[
-                {
-                  text: 'Download',
-                  icon: 'tabler-download',
-                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
-                },
-                {
-                  text: 'Edit',
-                  icon: 'tabler-pencil',
-                  href: `/apps/invoice/edit/${row.original.id}`,
-                  linkProps: {
-                    className: 'flex items-center is-full plb-2 pli-4 gap-2 text-textSecondary'
-                  }
-                },
-                {
-                  text: 'Duplicate',
-                  icon: 'tabler-copy',
-                  menuItemProps: { className: 'flex items-center gap-2 text-textSecondary' }
-                }
-              ]}
-            />
+            <IconButton>
+              <Link href={`/apps/invoice/preview/${row.original.id}`} className='flex'>
+                <i className='tabler-download text-textSecondary' />
+              </Link>
+            </IconButton>
           </div>
         ),
         enableSorting: false
@@ -308,7 +303,7 @@ const InvoiceListTable = ({ purchaseOrderData }: { purchaseOrderData: PurchaseOr
             }}
           >
             <MenuItem value=''>PO Status</MenuItem>
-            <MenuItem value='approved'>Approved</MenuItem>
+            <MenuItem value='completed'>Completed</MenuItem>
             <MenuItem value='pending'>Pending</MenuItem>
             <MenuItem value='rejected'>Rejected</MenuItem>
             <MenuItem value='draft'>Draft</MenuItem>
@@ -385,4 +380,4 @@ const InvoiceListTable = ({ purchaseOrderData }: { purchaseOrderData: PurchaseOr
   )
 }
 
-export default InvoiceListTable
+export default PurchaseOrderListTable
