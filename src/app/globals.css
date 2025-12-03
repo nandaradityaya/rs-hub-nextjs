@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Pace.js Loading Bar Styles - Minimal Theme */
+.pace {
+  pointer-events: none;
+  user-select: none;
+  z-index: 2000;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 100%;
+  background: transparent;
+}
+
+.pace .pace-progress {
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  max-width: 100%;
+  position: fixed;
+  z-index: 2000;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 100%;
+  width: 100%;
+  background: var(--mui-palette-primary-main, #3b82f6);
+  box-shadow:
+    0 0 10px rgba(59, 130, 246, 0.4),
+    0 0 5px rgba(59, 130, 246, 0.4);
+}
+
+.pace.pace-inactive {
+  display: none;
+}
+
+/* Customize for dark mode */
+[data-dark] .pace .pace-progress {
+  box-shadow:
+    0 0 10px rgba(96, 165, 250, 0.6),
+    0 0 5px rgba(96, 165, 250, 0.4);
+}
+
 :root {
   --border-radius: var(--mui-shape-borderRadius);
   --border-color: var(--mui-palette-divider);
