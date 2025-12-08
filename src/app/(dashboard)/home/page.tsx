@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Grid2'
 
-import PurchaseOrderListTable from '@/views/apps/PurchaseOrderListTable'
+import PurchaseOrderListTable from '@/views/apps/purchase-order/PurchaseOrderListTable'
 import { getPurchaseOrderData, getStatisticsData } from '../../server/actions'
-import StatusStatisticsCard from '@/views/apps/StatusStatisticsCard'
+import StatusStatisticsCard from '@/views/apps/purchase-order/StatusStatisticsCard'
 
 export default async function Page() {
   const dataStatistics = await getStatisticsData()

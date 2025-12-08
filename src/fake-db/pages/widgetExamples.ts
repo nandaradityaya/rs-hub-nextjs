@@ -10,23 +10,23 @@ export const db: CardStatsType = {
       color: 'primary'
     },
     {
-      title: 'Shipping',
+      title: 'Delivery',
       stats: 42,
       avatarIcon: 'tabler-truck',
       color: 'info'
     },
 
     {
-      title: 'GRN Review',
+      title: 'Completed',
       stats: 13,
-      avatarIcon: 'tabler-alert-triangle',
-      color: 'warning'
+      avatarIcon: 'tabler-check',
+      color: 'success'
     },
     {
-      title: 'Pending',
+      title: 'Request SP',
       stats: 2,
-      avatarIcon: 'tabler-clock',
-      color: 'error'
+      avatarIcon: 'tabler-file-search',
+      color: 'warning'
     }
 
     // {

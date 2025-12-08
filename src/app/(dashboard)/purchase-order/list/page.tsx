@@ -1,9 +1,9 @@
 import Grid from '@mui/material/Grid2'
 
-import InvoiceListTable from '@/views/apps/PurchaseOrderListTable'
-import { getPurchaseOrderData } from '../../server/actions'
+import InvoiceListTable from '@/views/apps/purchase-order/PurchaseOrderListTable'
+import { getPurchaseOrderData } from '../../../server/actions'
 
-export default async function Page() {
+export default async function ListPurchaseOrder() {
   const purchaseOrderData = await getPurchaseOrderData()
 
   return (

@@ -19,7 +19,7 @@ export const db: PurchaseOrderType[] = [
     poDate: `17 ${currentMonth} ${now.getFullYear()}`,
     poEndDate: `31 ${currentMonth} ${now.getFullYear()}`,
     shipTo: 'RS Mitra Keluarga - Grand Wisata',
-    status: 'PENDING'
+    status: 'CANCEL'
   },
 
   // tambahan sesuai daftar status
@@ -37,7 +37,7 @@ export const db: PurchaseOrderType[] = [
     poDate: `06 ${currentMonth} ${now.getFullYear()}`,
     poEndDate: `19 ${currentMonth} ${now.getFullYear()}`,
     shipTo: 'RS Mitra Keluarga - Kalideres',
-    status: 'PBF_RECEIVED'
+    status: 'AWAITING_SHIPMENT'
   },
   {
     id: '4991',
@@ -45,7 +45,7 @@ export const db: PurchaseOrderType[] = [
     poDate: `08 ${currentMonth} ${now.getFullYear()}`,
     poEndDate: `22 ${currentMonth} ${now.getFullYear()}`,
     shipTo: 'RS Mitra Keluarga - Kemayoran',
-    status: 'PROCESSING'
+    status: 'DELIVERY'
   },
   {
     id: '4992',
@@ -53,7 +53,7 @@ export const db: PurchaseOrderType[] = [
     poDate: `10 ${currentMonth} ${now.getFullYear()}`,
     poEndDate: `23 ${currentMonth} ${now.getFullYear()}`,
     shipTo: 'RS Mitra Keluarga - Depok',
-    status: 'SHIPPING'
+    status: 'ORDER_REVIEW'
   },
   {
     id: '4993',
@@ -61,7 +61,7 @@ export const db: PurchaseOrderType[] = [
     poDate: `12 ${currentMonth} ${now.getFullYear()}`,
     poEndDate: `26 ${currentMonth} ${now.getFullYear()}`,
     shipTo: 'RS Mitra Keluarga - Bekasi Barat',
-    status: 'GRN_REVIEW'
+    status: 'DELIVERY'
   },
   {
     id: '4994',

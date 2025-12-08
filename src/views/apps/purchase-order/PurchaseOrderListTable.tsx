@@ -75,13 +75,12 @@ type chipColorType = {
 
 export const chipColor: { [key: string]: chipColorType } = {
   NEW: { color: 'primary' },
-  PBF_RECEIVED: { color: 'success' },
-  PROCESSING: { color: 'info' },
-  SHIPPING: { color: 'info' },
-  GRN_REVIEW: { color: 'warning' },
+  AWAITING_SHIPMENT: { color: 'info' },
+  DELIVERY: { color: 'info' },
+  ORDER_REVIEW: { color: 'warning' },
   COMPLETED: { color: 'success' },
   FULFILLMENT_OVERDUE: { color: 'warning' },
-  PENDING: { color: 'error' }
+  CANCEL: { color: 'error' }
 }
 
 const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
@@ -173,7 +172,7 @@ const PurchaseOrderListTable = ({ purchaseOrderData }: { purchaseOrderData: Purc
       columnHelper.accessor('poNo', {
         header: 'PO Number',
         cell: ({ row }) => (
-          <Typography component={Link} href={`/apps/invoice/preview/${row.original.id}`} color='primary.main'>
+          <Typography component={Link} href={`/purchase-order/details/${row.original.poNo}`} color='primary.main'>
             {row.original.poNo}
           </Typography>
         )
@@ -279,7 +278,7 @@ const PurchaseOrderListTable = ({ purchaseOrderData }: { purchaseOrderData: Purc
             variant='contained'
             component={Link}
             startIcon={<i className='tabler-plus' />}
-            href='/apps/invoice/add'
+            href='/purchase-order/add'
             className='max-sm:is-full'
           >
             Purchase Order
